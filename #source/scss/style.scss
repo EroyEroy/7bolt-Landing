@@ -683,6 +683,11 @@ a {
   flex-direction: column;
   align-items: center;
 }
+.social-content__item-box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .social-content__link{
   img{
     width: 30px;
