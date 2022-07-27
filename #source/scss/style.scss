@@ -57,12 +57,17 @@
   font-weight: 900;
   font-display: swap;
 }
+
+body.overflow{
+  overflow: hidden;
+}
 body {
   font-family: "Helvetica", sans-serif;
   color: #fff;
-}
-body.overflow{
-  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 // настройка для прижатия footer к низу страницы
 .wrapper {
@@ -247,7 +252,7 @@ a {
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: 50% 50%;
   min-height: 600px;
 }
 // стилизация секции decision
@@ -624,7 +629,7 @@ a {
   font-weight: 600;
 }
 .burger-menu__item--color{
-  color: #15e0fb;
+  color: #ff6f00;
 }
 // кнопка якорь в начало страницы
 .scroll {
@@ -695,6 +700,119 @@ a {
 }
 .social-content__text{
   margin-top: 5px;
+}
+// стилизация секции direction
+.direction{
+  background-color: #000;
+}
+.direction__inner{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+.arrow{
+  position: absolute;
+  background-image: url('../img/arrow.png');
+  width: 60px;
+  height: 60px;
+  bottom: 2%;
+  transform: rotate(180deg);
+  right: calc(100% / 2 - 30px);
+  animation: arrowDownUp 2s ease-in-out infinite;
+}
+// стилизация секции callback
+.callback{
+  background-color: #757575;
+}
+.callback__inner{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 100px 0;
+}
+.callback__title{
+  font-size: 38px;
+  font-weight: 600;
+  margin-bottom: 50px;
+  text-align: center;
+}
+.callback__description{
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 2;
+  margin-bottom: 50px;
+}
+.callback__wrapper{
+  max-width: 790px;
+}
+.callback__label{
+  font-size: 16px;
+  display: block;
+  width: 100%;
+}
+.callback__span{
+  display: flex;
+  margin-bottom: 30px;
+}
+.callback__input{
+  background: none;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  font-size: 16px;
+  width: 100%;
+}
+.callback__form-wrapper{
+  display: flex;
+  margin-bottom: 50px;
+}
+.label-name{
+  margin-right: 30px;
+}
+.label-surname{
+  margin-left: 30px;
+}
+.label-email,
+.label-tel{
+  margin-bottom: 50px;
+}
+.callback__btn{
+  width: 100%;
+  background-color: #ff6f00;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 600;
+  padding: 10px;
+  margin-bottom: 50px;
+}
+.callback__form-description{
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+}
+@keyframes arrowDownUp {
+  0%{
+    transform: rotate(180deg) translateY(0px);
+  }
+  50%{
+    transform: rotate(180deg) translateY(30px);
+  }
+  100%{
+    transform: rotate(180deg) translateY(0px);
+  }
+}
+.direction__text{
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 50px;
+}
+.direction__title{
+  font-size: 260px;
+  font-weight: 600;
 }
 // медиа-запросы
 @media screen and (max-width: 1920px) {
@@ -824,6 +942,25 @@ a {
   .social-content{
     display: block;
   }
+  .direction__title{
+    font-size: calc(73px + (260 - 73) * ((100vw - 320px) / (959 - 320)));
+  }
+  .direction__text{
+    margin-bottom: calc(20px + (50 - 20) * ((100vw - 320px) / (959 - 320)));
+  }
+  .callback__title{
+    font-size: calc(24px + (38 - 24) * ((100vw - 320px) / (959 - 320)));
+  }
+  .callback__form-wrapper{
+    flex-wrap: wrap;
+  }
+  .label-name,
+  .label-surname{
+    margin: 0;
+  }
+  .label-name{
+    margin-bottom: 50px;
+  }
 }
 @media screen and (max-width: 479px) {
   .subtitle{
@@ -886,6 +1023,9 @@ a {
   }
   .logo__img{
     max-width: 120px;
+  }
+  .direction__text{
+    font-size: 22px;
   }
 }
 @media screen and (min-width: 480px) {

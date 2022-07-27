@@ -50,14 +50,20 @@ function buttonScrollTopMobile() {
 		scrollTo(0, 0);
 	};
 }
-
+const parallax = document.querySelector('.parallax__inner');
+if (parallax !== null) {
+	window.addEventListener('scroll', () => {
+		let scrollPosParallax = window.pageYOffset;
+		parallax.style.backgroundPosition = '50%' + scrollPosParallax * 0.052 + '%';
+	});
+}
 window.addEventListener('resize', () => {
 	if (window.innerWidth > 959) {
 		popupBtn.classList.remove('open');
 		popupContent.classList.remove('active');
 		document.body.classList.remove('overflow');
 		burgerBackground.classList.remove('active');
-	}
+	};
 	if (window.innerWidth < 480) {
 		buttonScrollTopMobile();
 		header.style.position = 'fixed';
@@ -178,3 +184,26 @@ if (animItems.length > 0) {
 		animOnScroll();
 	}, 300);
 };
+// отключение zoom через скролл (в том числе трекападами в macOS)
+document.addEventListener('mousewheel', function (e) {
+	if (!e.ctrlKey && !e.metaKey) return;
+
+	e.preventDefault();
+	e.stopImmediatePropagation();
+}, { passive: false });
+
+// отключение zoom прикосновениями (в том числе трекападами и т.п.) в Safari и iOS
+document.addEventListener('gesturestart', function (e) {
+	e.preventDefault();
+	e.stopImmediatePropagation();
+}, { passive: false });
+
+// отключение zoom через клавиатуру (ctrl + "+", ctrl + "-")
+// кнопки браузера для управления zoom отключены не будут
+document.addEventListener('keydown', function (e) {
+	if (!e.ctrlKey && !e.metaKey) return;
+	if (e.keyCode != 189 && e.keyCode != 187) return;
+
+	e.preventDefault();
+	e.stopImmediatePropagation();
+}, { passive: false });
