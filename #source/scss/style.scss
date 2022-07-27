@@ -164,7 +164,7 @@ a {
 .image-bg{
   width: 100%;
   height: 100vh;
-  background-image: url('../img/carBG.jpg');
+  background-image: url('../img/carBG.webp');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -200,7 +200,7 @@ a {
 }
 .problem__side{
   min-height: 1000px;
-  background-image: url('../img/problemHuman.jpg');
+  background-image: url('../img/problemHuman.webp');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -248,7 +248,7 @@ a {
 }
 // стилизация секции parallax
 .parallax__inner{
-  background: url('../img/parallaxBG.jpg');
+  background: url('../img/parallaxBG.webp');
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
