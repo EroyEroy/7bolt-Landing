@@ -35,6 +35,12 @@ if (window.matchMedia("(max-width: 479px)").matches) {
 
 		lastScroll = scrollPosition();
 	});
+} else {
+	header.style.position = 'absolute';
+	window.addEventListener('scroll', () => {
+		header.classList.remove('no_fix');
+		header.classList.remove('fix');
+	});
 }
 function buttonScrollTopMobile() {
 	window.addEventListener("scroll", function () {
@@ -49,13 +55,6 @@ function buttonScrollTopMobile() {
 		click.preventDefault();
 		scrollTo(0, 0);
 	};
-}
-const parallax = document.querySelector('.parallax__inner');
-if (parallax !== null) {
-	window.addEventListener('scroll', () => {
-		let scrollPosParallax = window.pageYOffset;
-		parallax.style.backgroundPosition = '50%' + scrollPosParallax * 0.052 + '%';
-	});
 }
 window.addEventListener('resize', () => {
 	if (window.innerWidth > 959) {
@@ -82,6 +81,12 @@ window.addEventListener('resize', () => {
 			}
 
 			lastScroll = scrollPosition();
+		});
+	} else {
+		header.style.position = 'absolute';
+		window.addEventListener('scroll', () => {
+			header.classList.remove('no_fix');
+			header.classList.remove('fix');
 		});
 	}
 });
@@ -147,6 +152,7 @@ function closePopupEsc() {
 OpenPopup();
 closePopupEsc();
 closePopup();
+const parallax = document.querySelector('.parallax');
 // анимация
 const animItems = document.querySelectorAll('.animate');
 
@@ -157,6 +163,7 @@ if (animItems.length > 0) {
 			const animItem = animItems[i];
 			const animItemHeight = animItem.offsetHeight;
 			const animeItemOffset = offset(animItem).top;
+			// const parallaxOffset = offset(parallax).top;
 			const animStart = 10;
 
 			// настройка
@@ -172,6 +179,8 @@ if (animItems.length > 0) {
 				animItem.classList.add('active');
 			}
 		};
+		// 	let scrollPosParallax = window.pageYOffset;
+		// 	parallax.style.backgroundPosition = '50%' + scrollPosParallax * 0.009 + 'px';
 	};
 	function offset(el) {
 		const rect = el.getBoundingClientRect(),

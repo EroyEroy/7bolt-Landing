@@ -426,12 +426,16 @@ a {
   margin-top: 30px;
 }
 
-.parallax__inner {
+.parallax {
+  overflow: hidden;
   background: url("../img/parallaxBG.webp");
-  background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
+  background-attachment: fixed;
+}
+
+.parallax__inner {
   min-height: 600px;
 }
 
@@ -484,8 +488,8 @@ a {
   min-height: 600px;
   background-image: url("../img/circleBG.svg");
   background-repeat: no-repeat;
-  background-size: 80%;
-  background-position: left center;
+  background-size: 100%;
+  background-position: center center;
 }
 
 .whom__inner {
@@ -520,8 +524,8 @@ a {
 }
 
 .coverage__video-content {
-  max-width: 70%;
-  height: 400px;
+  max-width: 100%;
+  height: 500px;
   position: relative;
 }
 
@@ -556,7 +560,8 @@ a {
 .purpose__cards {
   display: -ms-grid;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 620px));
+  -ms-grid-columns: minmax(300px, 620px) 10px minmax(300px, 620px) 10px minmax(300px, 620px);
+  grid-template-columns: repeat(3, minmax(300px, 620px));
   grid-template-rows: repeat(auto-fit, 500px);
   grid-auto-rows: 500px;
   grid-gap: 10px;
@@ -1050,12 +1055,13 @@ a {
 
 .arrow {
   position: absolute;
-  background-image: url("../img/arrow.png");
+  background-image: url("../img/arrowDown.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
   width: 60px;
   height: 60px;
-  bottom: 2%;
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
+  bottom: 5%;
   right: calc(50% - 30px);
   -webkit-animation: arrowDownUp 2s ease-in-out infinite;
           animation: arrowDownUp 2s ease-in-out infinite;
@@ -1160,31 +1166,31 @@ a {
 
 @-webkit-keyframes arrowDownUp {
   0% {
-    -webkit-transform: rotate(180deg) translateY(0px);
-            transform: rotate(180deg) translateY(0px);
+    -webkit-transform: rotate(0deg) translateY(0px);
+            transform: rotate(0deg) translateY(0px);
   }
   50% {
-    -webkit-transform: rotate(180deg) translateY(30px);
-            transform: rotate(180deg) translateY(30px);
+    -webkit-transform: rotate(0deg) translateY(30px);
+            transform: rotate(0deg) translateY(30px);
   }
   100% {
-    -webkit-transform: rotate(180deg) translateY(0px);
-            transform: rotate(180deg) translateY(0px);
+    -webkit-transform: rotate(0deg) translateY(0px);
+            transform: rotate(0deg) translateY(0px);
   }
 }
 
 @keyframes arrowDownUp {
   0% {
-    -webkit-transform: rotate(180deg) translateY(0px);
-            transform: rotate(180deg) translateY(0px);
+    -webkit-transform: rotate(0deg) translateY(0px);
+            transform: rotate(0deg) translateY(0px);
   }
   50% {
-    -webkit-transform: rotate(180deg) translateY(30px);
-            transform: rotate(180deg) translateY(30px);
+    -webkit-transform: rotate(0deg) translateY(30px);
+            transform: rotate(0deg) translateY(30px);
   }
   100% {
-    -webkit-transform: rotate(180deg) translateY(0px);
-            transform: rotate(180deg) translateY(0px);
+    -webkit-transform: rotate(0deg) translateY(0px);
+            transform: rotate(0deg) translateY(0px);
   }
 }
 .direction__text {
@@ -1196,6 +1202,25 @@ a {
 .direction__title {
   font-size: 260px;
   font-weight: 600;
+}
+
+.animate {
+  -webkit-transform: translateY(50%);
+          transform: translateY(50%);
+  opacity: 0;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.title.animate {
+  -webkit-transform: translateY(200%);
+          transform: translateY(200%);
+}
+
+.animate.active {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  opacity: 1;
 }
 
 @media screen and (max-width: 1920px) {
@@ -1236,6 +1261,10 @@ a {
   }
 }
 @media screen and (max-width: 959px) {
+  .purpose__cards {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 620px));
+  }
+
   .problem__side,
 .problem__wrapper {
     width: 100%;
@@ -1304,10 +1333,6 @@ a {
 
   .whom__wrapper + .whom__wrapper {
     margin-top: 50px;
-  }
-
-  .coverage__video-content {
-    max-width: 100%;
   }
 
   .coverage__title {
@@ -1465,22 +1490,4 @@ a {
   .scroll {
     display: none;
   }
-}
-.animate {
-  -webkit-transform: translateY(50%);
-          transform: translateY(50%);
-  opacity: 0;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
-
-.title.animate {
-  -webkit-transform: translateY(200%);
-          transform: translateY(200%);
-}
-
-.animate.active {
-  -webkit-transform: translateY(0);
-          transform: translateY(0);
-  opacity: 1;
 }
